@@ -123,6 +123,21 @@ def GETBG(random_image=True):
     else:
         return None    
 
+##############################CAPTAIN ADD YOUR FUNCTION HERE##############################
+
+
+
+
+
+##########################################################################################
+
+
+
+
+
+
+
+
 
 def GETPMCFOLDER(pmc_id, start_path='.'):
     PMCNUM = pmc_id.upper().replace("PMC", "")
