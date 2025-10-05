@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learn More – NASA Bioscience Dashboard</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: black;
+    font-family: Arial, sans-serif;
+    color: white;
+    overflow-x: hidden;
+  }
+  .stars {
+    width: 100%;
+    height: 100%;
+    background: url("https://www.transparenttextures.com/patterns/stardust.png");
+    animation: twinkle 10s infinite linear;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -3;
+  }
+  @keyframes twinkle {
+    from { background-position: 0 0; }
+    to { background-position: -1000px 1000px; }
+  }
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 20px 50px 20px;
+  }
+  h1 {
+    font-size: 3em;
+    color: #ff9800;
+    text-shadow: 0 0 15px #ff9800;
+    margin-bottom: 30px;
+    line-height: 1.3;
+  }
+  h2 {
+    color: #00bcd4;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #00bcd4;
+  }
+  p {
+    line-height: 1.9;
+    font-size: 1.15em;
+    color: #ddd;
+    margin-bottom: 25px;
+  }
+  ul {
+    margin-left: 20px;
+    list-style-type: disc;
+    color: #ffeb3b;
+    margin-bottom: 30px;
+  }
+  li {
+    line-height: 1.8;
+    margin-bottom: 12px;
+  }
+  .btn {
+    display: inline-block;
+    padding: 12px 25px;
+    margin: 20px 10px 0 0;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  .btn.primary {
+    background: #ff9800;
+    color: black;
+    box-shadow: 0 0 15px #ff9800;
+  }
+  .btn.primary:hover {
+    background: #ffa733;
+    box-shadow: 0 0 25px #ffb84d;
+  }
+  .btn.secondary {
+    border: 2px solid #ff9800;
+    color: #ff9800;
+  }
+  .btn.secondary:hover {
+    background: #ff9800;
+    color: black;
+    box-shadow: 0 0 20px #ff9800;
+  }
+  .cosmos {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    z-index: -2;
+  }
+  .asteroid {
+    width: 150px;
+    filter: drop-shadow(0 0 10px #ff9800);
+    animation: float 6s ease-in-out infinite alternate;
+  }
+  .galaxy {
+    width: 280px;
+    filter: drop-shadow(0 0 15px #00bcd4);
+  }
+  @keyframes float {
+    from { transform: translateY(0); }
+    to { transform: translateY(-20px); }
+  }
+</style>
+</head>
+<body>
+<div class="stars"></div>
+<div class="container">
+  <h1>NASA Bioscience Dashboard</h1>
+  <p>Enable a <strong>new era of human space exploration</strong>! Our dashboard uses cutting-edge AI and knowledge graphs to summarize decades of NASA bioscience experiments in space. Navigate the data, explore experiment results, and uncover insights that drive innovation for Moon and Mars missions.</p>
+  <section>
+    <h2>Key Features</h2>
+    <ul>
+      <li><strong>AI-Powered Summarization:</strong> Extracts critical insights from hundreds of NASA publications.</li>
+      <li><strong>Knowledge Graphs:</strong> Visualizes relationships between experiments, organisms, and mission goals.</li>
+      <li><strong>Interactive Exploration:</strong> Search and filter by research area, organism, or mission type.</li>
+      <li><strong>Actionable Insights:</strong> Provides takeaways for scientists, mission planners, and managers.</li>
+      <li><strong>Visual & Audio Summaries:</strong> Understand complex datasets through graphs, timelines, and audio.</li>
+      <li><strong>NASA Integration:</strong> Pulls relevant data from OSDR, Space Life Sciences Library, and Task Book.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Why Our Dashboard Stands Out</h2>
+    <ul>
+      <li>Consolidates decades of research into an intuitive interface.</li>
+      <li>Uncovers hidden patterns and knowledge gaps using AI.</li>
+      <li>Designed for scientists, managers, and mission architects.</li>
+      <li>Interactive: highlights relationships across studies dynamically.</li>
+      <li>Actionable insights for safe and efficient human space exploration.</li>
+    </ul>
+  </section>
+  <div class="footer-btns">
+    <a href="nasafile.html" class="btn primary">Back to Dashboard</a>
+     <a href="mailto:found404at404notfound@gmail.com" class="btn primary">Contact Team</a>
+  </div>
+</div>
+<div class="cosmos">
+  <img src="ase.png" class="asteroid" alt="Asteroid">
+  <img src="g.png" class="galaxy" alt="Galaxy">
+</div>
+</body>
+</html>
+
+
