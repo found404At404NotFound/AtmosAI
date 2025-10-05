@@ -41,16 +41,6 @@ db = SQLAlchemy(app)
 
 NASA_API_KEY = os.getenv('NASA_API_KEY')
 
-############################### SPANDANA CODE PASTE ######################################
-def path(filepaths, filename):
-    for f in filepaths:
-        if filename in f:
-            return f[filename]  
-        else
-             return "File not found"
-
-
-###########################################################################################
 
 
 
@@ -1183,6 +1173,20 @@ def DOWNLOADARTICLE(pmc_id, start_path='.'):
     and returns the absolute path to the *subdirectory* containing the first found PDF.
     Includes delays and robust error handling to manage NCBI blocks.
     """
+    pmc_id_clean = pmc_id.upper().replace("PMC", "")
+    save_dir = os.path.join('pdf', f'PMC_{pmc_id_clean}_full')
+
+    # ✅ Skip download if already exists with PDFs
+    if os.path.exists(save_dir):
+        pdf_files = [f for f in os.listdir(save_dir) if f.lower().endswith('.pdf')]
+        if pdf_files:
+            print(f"[SKIP] PDFs already exist locally in {save_dir}")
+            return save_dir, None
+        else:
+            print(f"[WARNING] Directory exists but no PDFs found. Redownloading.")
+            return 
+
+
     pmc_id_clean = pmc_id.upper().replace("PMC", "")
     OA_BASE = "https://www.ncbi.nlm.nih.gov/pmc/utils/oa/oa.fcgi"  # Removed trailing space
 
