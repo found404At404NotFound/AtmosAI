@@ -42,7 +42,12 @@ db = SQLAlchemy(app)
 NASA_API_KEY = os.getenv('NASA_API_KEY')
 
 ############################### SPANDANA CODE PASTE ######################################
-
+def path(filepaths, filename):
+    for f in filepaths:
+        if filename in f:
+            return f[filename]  
+        else
+             return "File not found"
 
 
 ###########################################################################################
