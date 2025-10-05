@@ -1,1 +1,44 @@
-PASTE YOUR CODE 
+div.innerHTML=`<span class="pdf-title">${n}</span><button class="btn-load-pdf mt-2" data-pdf="${n}">Click to Load</button>`;
+    pdfList.appendChild(div);
+    div.querySelector('.btn-load-pdf').addEventListener('click',e=>{
+      pdfNow=e.target.dataset.pdf;
+      loadPdf(pdfNow);
+    });
+  });
+}
+
+function loadPdf(n){
+  const url=`${base}/view/article?pmcid=${pmcidNow}&pdfname=${encodeURIComponent(n)}`;
+  document.querySelector('.pdf-viewer-container').innerHTML=
+    `<iframe id="pdfViewer" title="Article PDF Viewer" class="w-100 h-100" src="${url}" style="border:none;"></iframe>`;
+}
+
+askBtn.addEventListener('click',askAI);
+qIn.addEventListener('keypress',e=>{if(e.key==='Enter')askAI()});
+doubtIn.addEventListener('keypress',e=>{if(e.key==='Enter')askAI()});
+
+function askAI(){
+  const txt=doubtIn.value.trim(),q=qIn.value.trim();
+  const body={intext:txt,question:q,pdfname:pdfNow,pmcid:pmcidNow};
+  if(!txt){aiOut.innerHTML=`<p class="text-warning">Error: Please paste the line/text (Doubt) into the first box.</p>`;return;}
+  if(!q){aiOut.innerHTML=`<p class="text-warning">Error: Please enter a specific Question into the second box.</p>`;return;}
+  if(!pdfNow){aiOut.innerHTML=`<p class="text-warning">Error: Please load a PDF file first by clicking 'Click to Load'.</p>`;return;}
+  aiOut.innerHTML=`<div class="text-center text-info">Thinking...</div>`;
+  fetch(`${base}/askai`,{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(body)
+  })
+  .then(r=>r.json())
+  .then(d=>{
+    aiOut.innerHTML=`<p class="text-white">${d.response}</p>`;
+    qIn.value='';
+  })
+  .catch(e=>{
+    console.error("AI fail:",e);
+    aiOut.innerHTML=`<p class="text-danger">Sorry, the AI is offline .</p>`;
+  });
+}
+</script>
+</body>
+</html>PASTE YOUR CODE 
