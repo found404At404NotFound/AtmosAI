@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hackathon Cosmic Dashboard</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: black;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+.stars {
+  width: 100%;
+  height: 100%;
+  background: url("https://www.transparenttextures.com/patterns/stardust.png");
+  animation: twinkle 10s infinite linear;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -3;
+}
+@keyframes twinkle {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -1000px 1000px;
+  }
+}
+.left {
+  position: absolute;
+  top: 25%;
+  left: 5%;
+  max-width: 400px;
+}
+.left h1 {
+  font-size: 2.5em;
+  color: #ff9800;
+}
+.left p {
+  margin: 15px 0;
+  font-size: 1.1em;
+  color: #ddd;
+}
+.btn {
+  display: inline-block;
+  padding: 12px 25px;
+  margin: 10px 10px 0 0;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: bold;
+}
+.btn.start {
+  background: #ff9800;
+  color: black;
+}
+.btn.start:hover {
+  background: #ffa733;
+}
+.btn.learn {
+  border: 2px solid #ff9800;
+  color: #ff9800;
+  background: transparent;
+}
+.btn.learn:hover {
+  background: #ff9800;
+  color: black;
+}
+.cosmos {
+  position: absolute;
+  right: 0;
+  bottom: 5%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+.asteroid {
+  width: 150px;
+  filter: drop-shadow(0 0 10px #ff9800);
+  margin-bottom: 10px;
+}
+.galaxy {
+  width: 280px;
+  filter: drop-shadow(0 0 15px #00bcd4);
+  margin-right: 0;
+}
+.rocket {
+  position: absolute;
+  width: 70px;
+  filter: drop-shadow(0 0 10px #ff9800);
+  animation: zigzag 12s linear infinite;
+}
+.rocket:nth-child(4) {
+  top: 20%;
+  left: -80px;
+  animation-delay: 0s;
+}
+.rocket:nth-child(5) {
+  top: 50%;
+  left: -80px;
+  animation-delay: 4s;
+}
+.rocket:nth-child(6) {
+  top: 80%;
+  left: -80px;
+  animation-delay: 8s;
+}
+@keyframes zigzag {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  20% {
+    transform: translate(20vw, -30px) rotate(10deg);
+  }
+  40% {
+    transform: translate(40vw, 40px) rotate(-10deg);
+  }
+  60% {
+    transform: translate(60vw, -40px) rotate(10deg);
+  }
+  80% {
+    transform: translate(80vw, 30px) rotate(-10deg);
+  }
+  100% {
+    transform: translate(100vw, 0) rotate(0deg);
+  }
+}
+</style>
+</head>
+<body>
+<div class="stars"></div>
+<div class="left">
+<h1>Welcome to AtmosAI</h1>
+<p>Innovation Knows No Gravity!!</p>
+<div>
+<span class="btn start" onclick="window.location.href='search.html';">
+START NOW 🚀
+</span>
+<span class="btn learn" onclick="window.location.href='learn.html';">
+LEARN MORE 🌌
+</span>
+</div>
+</div>
+<div class="cosmos">
+<img src="ase.png" class="asteroid" alt="Asteroid">
+<img src="g.png" class="galaxy" alt="Galaxy">
+</div>
+<img src="rocket1.gif" class="rocket" alt="Rocket 1">
+<img src="rocket1.gif" class="rocket" alt="Rocket 2">
+<img src="rocket1.gif" class="rocket" alt="Rocket 3">
+</body>
+</html>
