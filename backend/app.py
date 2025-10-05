@@ -124,11 +124,11 @@ def GETBG(random_image=True):
         return None    
 
 ##############################CAPTAIN ADD YOUR FUNCTION HERE##############################
-
-
-
-
-
+def getPMC(s): 
+    a=s.split('/')
+    for i in a:
+       if 'PMC'in i:
+           return i
 ##########################################################################################
 
 
