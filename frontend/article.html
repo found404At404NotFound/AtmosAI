@@ -6,6 +6,7 @@
 <title>Article Details</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 * {
   margin: 0;
@@ -13,11 +14,12 @@
   box-sizing: border-box;
 }
 body {
-  background: black;
+  background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
   color: white;
   font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
   padding: 0;
+  min-height: 100vh;
 }
 .stars {
   width: 100%;
@@ -37,140 +39,454 @@ body {
 
 /* ====== CONTAINER ====== */
 .container-fluid {
-  max-width: 1300px;
-  padding: 20px;
+  max-width: 1400px;
+  padding: 25px;
 }
 
 /* ====== HEADER BOX ====== */
 .header-box {
-  background-color: rgba(26, 26, 46, 0.7);
-  backdrop-filter: blur(5px);
-  border-radius: 10px;
-  padding: 25px;
-  margin-bottom: 20px;
-  box-shadow: 0 0 15px rgba(0, 188, 212, 0.3);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background: linear-gradient(135deg, rgba(26, 26, 46, 0.85) 0%, rgba(30, 30, 60, 0.9) 100%);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 30px;
+  margin-bottom: 25px;
+  box-shadow: 0 8px 32px rgba(0, 188, 212, 0.25);
+  border: 1px solid rgba(0, 188, 212, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.header-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #00bcd4, #ff9800);
+  border-radius: 16px 16px 0 0;
 }
 
 #articleTitle {
-  font-size: 2em;
-  color: #ff9800;
-  text-shadow: 0 0 15px #ff9800;
+  font-size: 2.2rem;
+  background: linear-gradient(90deg, #ff9800, #ffb74d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(255, 152, 0, 0.3);
   text-align: center;
-  margin-bottom: 5px;
-  padding-bottom: 10px;
+  margin-bottom: 8px;
+  padding-bottom: 15px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
 
 #pmcidDisplay {
-  color: #00bcd4;
-  font-size: 1em;
-  font-weight: 300;
+  color: #4fc3f7;
+  font-size: 1.1rem;
+  font-weight: 400;
+  background: rgba(0, 188, 212, 0.1);
+  padding: 5px 15px;
+  border-radius: 20px;
+  display: inline-block;
 }
+
+.back-btn {
+  background: rgba(0, 188, 212, 0.15);
+  border: 1px solid rgba(0, 188, 212, 0.4);
+  color: #4fc3f7;
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-btn:hover {
+  background: rgba(0, 188, 212, 0.25);
+  color: #80deea;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 188, 212, 0.2);
+}
+
+/* ====== PDF LIST BOX ====== */
 .pdf-list-box {
-  background-color: #1a1a2e;
-  padding: 15px;
-  border-radius: 10px;
-  height: 70vh;
+  background: linear-gradient(135deg, rgba(26, 26, 46, 0.9) 0%, rgba(30, 30, 60, 0.95) 100%);
+  padding: 20px;
+  border-radius: 16px;
+  height: 75vh;
   overflow-y: auto;
-  border: 1px solid #00bcd4;
-  box-shadow: 0 0 8px rgba(0, 188, 212, 0.5);
+  border: 1px solid rgba(0, 188, 212, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 188, 212, 0.2);
+  backdrop-filter: blur(8px);
+}
+
+.pdf-list-box h5 {
+  color: #4fc3f7;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 1.3rem;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(0, 188, 212, 0.3);
+}
+
+.pdf-list-item {
+  background: rgba(18, 18, 35, 0.7);
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .pdf-list-item:hover {
-  background-color: #383838;
+  background: rgba(40, 40, 70, 0.8);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 188, 212, 0.2);
+  border: 1px solid rgba(0, 188, 212, 0.4);
 }
 
 .pdf-title {
-  font-size: 0.9rem;
-  margin-bottom: 5px;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
   word-break: break-word;
-  color: #fff;
+  color: #e0e0e0;
+  font-weight: 500;
+  line-height: 1.4;
 }
 
 .btn-load-pdf {
-  background: linear-gradient(45deg, #00bcd4, #0096c7);
-  color: black;
+  background: linear-gradient(135deg, #00bcd4, #0097a7);
+  color: white;
   border: none;
-  padding: 6px 12px;
-  border-radius: 5px;
-  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
   cursor: pointer;
-  font-size: 0.8rem;
-  transition: 0.3s;
-}
-#pdfViewer {
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
   width: 100%;
-  height: 70vh;
-  border: 3px solid #ff9800;
-  border-radius: 10px;
-  box-shadow: 0 0 25px rgba(255, 152, 0, 0.7);
-  background-color: #121212;
-  padding: 0;
+  justify-content: center;
 }
 
+.btn-load-pdf:hover {
+  background: linear-gradient(135deg, #00acc1, #00838f);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 188, 212, 0.4);
+}
+
+/* ====== PDF VIEWER ====== */
 .pdf-viewer-container {
   width: 100%;
-  height: 70vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2em;
-  color: #00bcd4;
+  height: 75vh;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(255, 152, 0, 0.3);
+  border: 2px solid rgba(255, 152, 0, 0.4);
+  background: #121212;
+  position: relative;
 }
 
-/* ====== AI BOX (RIGHT COLUMN) ====== */
+#pdfViewer {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #121212;
+}
+
+.pdf-viewer-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ff9800, #ffb74d);
+  z-index: 10;
+}
+
+/* ====== AI BOX ====== */
 .ai-box {
-  background-color: #1a1a2e;
-  padding: 15px;
-  border-radius: 10px;
-  height: 70vh;
-  border: 1px solid #ff9800;
-  box-shadow: 0 0 10px rgba(255, 152, 0, 0.5);
+  background: linear-gradient(135deg, rgba(26, 26, 46, 0.9) 0%, rgba(40, 30, 40, 0.95) 100%);
+  padding: 20px;
+  border-radius: 16px;
+  height: 75vh;
+  border: 1px solid rgba(255, 152, 0, 0.3);
+  box-shadow: 0 8px 32px rgba(255, 152, 0, 0.2);
+  backdrop-filter: blur(8px);
   display: flex;
   flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.ai-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ff9800, #ffb74d);
+  border-radius: 16px 16px 0 0;
 }
 
 .ai-box h5 {
-  color: #ff9800;
+  color: #ffb74d;
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 1.3rem;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 152, 0, 0.3);
 }
 
 .ai-input-container {
   margin-top: auto;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
 }
 
 #aiResponse {
   overflow-y: auto;
   flex-grow: 1;
-  padding: 5px 0;
-  margin-bottom: 10px;
-  border-bottom: 1px solid #444;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  background: rgba(18, 18, 35, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  min-height: 180px;
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 .ai-input {
-  background-color: #121212;
-  border: 1px solid #00bcd4;
+  background: rgba(18, 18, 35, 0.7);
+  border: 1px solid rgba(0, 188, 212, 0.4);
   color: white;
-  padding: 8px 12px;
+  padding: 12px 15px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.ai-input:focus {
+  background: rgba(18, 18, 35, 0.9);
+  border: 1px solid #00bcd4;
+  box-shadow: 0 0 0 2px rgba(0, 188, 212, 0.2);
+  color: white;
+}
+
+.form-group label {
+  color: #4fc3f7;
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  display: block;
 }
 
 .btn-ai-ask {
-  background: linear-gradient(45deg, #ff9800, #ffb703);
-  color: black;
+  background: linear-gradient(135deg, #ff9800, #f57c00);
+  color: white;
   border: none;
-  font-weight: 700;
+  font-weight: 600;
+  padding: 12px 25px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
 }
 
-.pdf-loading-message {
+.btn-ai-ask:hover {
+  background: linear-gradient(135deg, #fb8c00, #ef6c00);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+}
+
+/* ====== FORMATTED AI RESPONSE ====== */
+.ai-response-content {
+  color: #e0e0e0;
+  line-height: 1.6;
+}
+
+.ai-response-content h1, 
+.ai-response-content h2, 
+.ai-response-content h3 {
+  color: #ffb74d;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.ai-response-content h1 {
+  font-size: 1.4rem;
+  border-bottom: 1px solid rgba(255, 183, 77, 0.3);
+  padding-bottom: 5px;
+}
+
+.ai-response-content h2 {
+  font-size: 1.2rem;
+}
+
+.ai-response-content h3 {
+  font-size: 1.1rem;
+}
+
+.ai-response-content p {
+  margin-bottom: 12px;
+}
+
+.ai-response-content strong {
+  color: #4fc3f7;
+  font-weight: 600;
+}
+
+.ai-response-content em {
+  color: #81c784;
+  font-style: italic;
+}
+
+.ai-response-content ul, 
+.ai-response-content ol {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+.ai-response-content li {
+  margin-bottom: 8px;
+}
+
+.ai-response-content code {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  color: #ffcc80;
+}
+
+.ai-response-content blockquote {
+  border-left: 3px solid #4fc3f7;
+  padding-left: 15px;
+  margin: 15px 0;
+  color: #b0bec5;
+  font-style: italic;
+}
+
+/* ====== TYPING EFFECT ====== */
+.typing-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1.2em;
+  background-color: #4fc3f7;
+  margin-left: 2px;
+  animation: blink 1s infinite;
+  vertical-align: middle;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ====== SCROLLBAR STYLING ====== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(18, 18, 35, 0.5);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #00bcd4, #0097a7);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #00acc1, #00838f);
+}
+
+/* ====== LOADING & STATUS MESSAGES ====== */
+.pdf-loading-message, .text-center.text-info {
   text-align: center;
-  padding-top: 20%;
-  color: #ff9800;
+  padding: 20% 10px;
+  color: #4fc3f7;
+  font-size: 1.1rem;
+}
+
+.alert {
+  border-radius: 12px;
+  border: none;
+  padding: 15px;
+}
+
+.alert-danger {
+  background: rgba(244, 67, 54, 0.15);
+  color: #ff8a80;
+  border: 1px solid rgba(244, 67, 54, 0.3);
+}
+
+.alert-info {
+  background: rgba(3, 169, 244, 0.15);
+  color: #80deea;
+  border: 1px solid rgba(3, 169, 244, 0.3);
+}
+
+.text-warning {
+  color: #ffb74d !important;
+}
+
+.text-danger {
+  color: #ff8a80 !important;
+}
+
+/* ====== RESPONSIVE ADJUSTMENTS ====== */
+@media (max-width: 992px) {
+  .container-fluid {
+    padding: 15px;
+  }
+  
+  .header-box {
+    padding: 20px;
+  }
+  
+  #articleTitle {
+    font-size: 1.8rem;
+  }
+  
+  .pdf-list-box, .ai-box, .pdf-viewer-container {
+    height: 60vh;
+  }
+}
+
+@media (max-width: 768px) {
+  #articleTitle {
+    font-size: 1.5rem;
+  }
+  
+  .header-box {
+    padding: 15px;
+  }
+  
+  .pdf-list-box, .ai-box, .pdf-viewer-container {
+    height: 50vh;
+  }
+  
+  .back-btn {
+    padding: 6px 15px;
+    font-size: 0.9rem;
+  }
 }
 </style>
 </head>
@@ -180,19 +496,23 @@ body {
 
 <div class="container-fluid">
   <div class="header-box">
-    <a href="search.html" class="btn btn-sm btn-outline-info align-self-start mb-3">← Back to Search</a>
+    <a href="search.html" class="back-btn align-self-start mb-3">
+      <i class="fas fa-arrow-left"></i> Back to Search
+    </a>
     <div class="text-center w-100">
       <h1 id="articleTitle">Loading Article Title...</h1>
-      <p class="text-muted mb-0">PMCID: <span id="pmcidDisplay"></span></p>
+      <p class="mb-0 mt-2">PMCID: <span id="pmcidDisplay" class="pmcid-badge"></span></p>
     </div>
   </div>
 
   <div class="row">
     <div class="col-lg-3 col-md-4 mb-4">
       <div class="pdf-list-box">
-        <h5 class="text-center text-info mb-3">PDFs in Article</h5>
+        <h5><i class="fas fa-file-pdf me-2"></i>PDFs in Article</h5>
         <div id="pdfListContainer">
-          <p class="text-info text-center">Contacting server to find available PDFs...</p>
+          <div class="text-center text-info py-4">
+            <i class="fas fa-spinner fa-spin me-2"></i>Contacting server to find available PDFs...
+          </div>
         </div>
       </div>
     </div>
@@ -207,24 +527,26 @@ body {
 
     <div class="col-lg-3 col-md-12 mb-4">
       <div class="ai-box">
-        <h5>Ask AI Assistant</h5>
+        <h5><i class="fas fa-robot me-2"></i>Ask AI Assistant</h5>
         <div id="aiResponse">
           <p class="text-muted">1. Paste the text (Doubt) below.<br>2. Ask your Question.</p>
         </div>
 
         <div class="ai-input-container">
           <div class="form-group">
-            <label for="doubtInput" class="text-info small mb-1">1. Paste Text (Doubt) Here:</label>
+            <label for="doubtInput"><i class="fas fa-paste me-1"></i>Paste Text (Doubt) Here:</label>
             <textarea id="doubtInput" class="form-control ai-input" rows="3" placeholder="Paste the selected text (context) from the PDF..."></textarea>
           </div>
 
           <div class="form-group">
-            <label for="questionInput" class="text-info small mb-1">2. Question:</label>
+            <label for="questionInput"><i class="fas fa-question-circle me-1"></i>Question:</label>
             <input type="text" id="questionInput" class="form-control ai-input" placeholder="Type your specific question about the text..."/>
           </div>
 
           <div class="d-flex justify-content-end">
-            <button class="btn btn-ai-ask" id="aiSendButton">Ask</button>
+            <button class="btn btn-ai-ask" id="aiSendButton">
+              <i class="fas fa-paper-plane me-1"></i> Ask AI
+            </button>
           </div>
         </div>
       </div>
@@ -233,7 +555,7 @@ body {
 </div>
 
 <script type="module">
-const base="https://anniversary-garmin-nascar-mpg.trycloudflare.com";
+const base="http://192.168.1.11:5000";
 let pmcidNow='',pdfNow='';
 const pdfV=document.getElementById('pdfViewer'),
 pdfList=document.getElementById('pdfListContainer'),
@@ -242,6 +564,55 @@ qIn=document.getElementById('questionInput'),
 askBtn=document.getElementById('aiSendButton'),
 aiOut=document.getElementById('aiResponse'),
 titleEl=document.getElementById('articleTitle');
+
+// Format AI response with markdown-like formatting
+function formatAIResponse(text) {
+    // Convert markdown-like syntax to HTML
+    let formattedText = text
+        // Headers
+        .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+        .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+        .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+        // Bold
+        .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>')
+        // Italics
+        .replace(/\*(.*?)\*/gim, '<em>$1</em>')
+        // Lists
+        .replace(/^\d+\.\s(.*$)/gim, '<li>$1</li>')
+        // Line breaks
+        .replace(/\n/g, '<br>');
+    
+    // Wrap list items in ordered list if numbers are present
+    if (formattedText.includes('<li>')) {
+        formattedText = formattedText.replace(/(<li>.*<\/li>)/gis, '<ol>$1</ol>');
+    }
+    
+    // Add bullet points for asterisk lists
+    formattedText = formattedText.replace(/^\*\s(.*$)/gim, '<li>$1</li>');
+    if (formattedText.includes('<li>') && !formattedText.includes('<ol>')) {
+        formattedText = formattedText.replace(/(<li>.*<\/li>)/gis, '<ul>$1</ul>');
+    }
+    
+    return `<div class="ai-response-content">${formattedText}</div>`;
+}
+
+// Typing effect function
+function typeResponse(element, text, speed = 30) {
+    element.innerHTML = '';
+    let i = 0;
+    
+    function type() {
+        if (i < text.length) {
+            element.innerHTML = text.substring(0, i+1) + '<span class="typing-cursor"></span>';
+            i++;
+            setTimeout(type, speed);
+        } else {
+            element.innerHTML = text;
+        }
+    }
+    
+    type();
+}
 
 document.addEventListener('DOMContentLoaded',()=>{
   const p=new URLSearchParams(window.location.search).get('pmcid');
@@ -278,7 +649,11 @@ function showData(d){
   names.forEach(n=>{
     const div=document.createElement('div');
     div.className='pdf-list-item';
-    div.innerHTML=`<span class="pdf-title">${n}</span><button class="btn-load-pdf mt-2" data-pdf="${n}">Click to Load</button>`;
+    div.innerHTML=`
+      <div class="pdf-title"><i class="fas fa-file-pdf me-2 text-danger"></i>${n}</div>
+      <button class="btn-load-pdf" data-pdf="${n}">
+        <i class="fas fa-eye me-1"></i> Click to Load
+      </button>`;
     pdfList.appendChild(div);
     div.querySelector('.btn-load-pdf').addEventListener('click',e=>{
       pdfNow=e.target.dataset.pdf;
@@ -300,10 +675,10 @@ doubtIn.addEventListener('keypress',e=>{if(e.key==='Enter')askAI()});
 function askAI(){
   const txt=doubtIn.value.trim(),q=qIn.value.trim();
   const body={intext:txt,question:q,pdfname:pdfNow,pmcid:pmcidNow};
-  if(!txt){aiOut.innerHTML=`<p class="text-warning">Error: Please paste the line/text (Doubt) into the first box.</p>`;return;}
-  if(!q){aiOut.innerHTML=`<p class="text-warning">Error: Please enter a specific Question into the second box.</p>`;return;}
-  if(!pdfNow){aiOut.innerHTML=`<p class="text-warning">Error: Please load a PDF file first by clicking 'Click to Load'.</p>`;return;}
-  aiOut.innerHTML=`<div class="text-center text-info">Thinking...</div>`;
+  if(!txt){aiOut.innerHTML=`<p class="text-warning"><i class="fas fa-exclamation-triangle me-2"></i>Error: Please paste the line/text (Doubt) into the first box.</p>`;return;}
+  if(!q){aiOut.innerHTML=`<p class="text-warning"><i class="fas fa-exclamation-triangle me-2"></i>Error: Please enter a specific Question into the second box.</p>`;return;}
+  if(!pdfNow){aiOut.innerHTML=`<p class="text-warning"><i class="fas fa-exclamation-triangle me-2"></i>Error: Please load a PDF file first by clicking 'Click to Load'.</p>`;return;}
+  aiOut.innerHTML=`<div class="text-center text-info"><i class="fas fa-spinner fa-spin me-2"></i>Thinking...</div>`;
   fetch(`${base}/askai`,{
     method:'POST',
     headers:{'Content-Type':'application/json'},
@@ -311,12 +686,22 @@ function askAI(){
   })
   .then(r=>r.json())
   .then(d=>{
-    aiOut.innerHTML=`<p class="text-white">${d.response}</p>`;
+    // Format the response and apply typing effect
+    const formattedResponse = formatAIResponse(d.response);
+    aiOut.innerHTML = '<div class="ai-response-content"><span class="typing-cursor"></span></div>';
+    typeResponse(aiOut.querySelector('.ai-response-content'), 
+                formattedResponse.replace(/<[^>]*>/g, ''), 20);
+    
+    // After typing is complete, show the formatted text
+    setTimeout(() => {
+        aiOut.innerHTML = formattedResponse;
+    }, d.response.length * 20 + 500);
+    
     qIn.value='';
   })
   .catch(e=>{
     console.error("AI fail:",e);
-    aiOut.innerHTML=`<p class="text-danger">Sorry, the AI is offline .</p>`;
+    aiOut.innerHTML=`<p class="text-danger"><i class="fas fa-exclamation-circle me-2"></i>Sorry, the AI is offline.</p>`;
   });
 }
 </script>
