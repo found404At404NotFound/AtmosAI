@@ -31,6 +31,22 @@ app.permanent_session_lifetime = timedelta(days=7)
 origin = ['http://127.0.0.1:5501','https://progress-schools-mediterranean-heart.trycloudflare.com'] # Fixed: Removed trailing space
 CORS(app, resources={r"/*": {"origins": origin}}, supports_credentials=True)
 db = SQLAlchemy(app)
+
+
+
+
+####################### SPANDANA PASTE YOUR FUNCTION HERE ##########################################
+
+
+
+
+
+
+################################################################################################
+
+
+
+
 class Listings(db.Model):
     ID = db.Column(db.Integer, primary_key = True, autoincrement =True)
     NAME = db.Column(db.Text, nullable =False)
