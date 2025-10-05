@@ -73,17 +73,5 @@ Lightweight Flask backend seamlessly connects to an AI inference engine for cont
 
 ---
 
-## 🧩 Example Workflow
-
-### 🔹 Step 1: User Query
-
-```json
-{
-  "intext": "Seedling Growth Spaceflight Experiments",
-  "question": "What does this experiment study?",
-  "pdfname": "fpls-10-01529.pdf",
-  "pmcid": "PMC6889863"
-}
-
 
 
